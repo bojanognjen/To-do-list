@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /* 3. Add accessible line-height */
+  line-height: 1.5;
+  /* 4. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 5. Improve media defaults */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 6. Inherit fonts for form controls */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* 7. Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* 8. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+/*
+  9. Create a root stacking context
+*/
+#root, #__next {
+  isolation: isolate;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+.container {
+  max-width: 100%;
+  height: auto;
+  min-width: 300px;
+  min-height: 200px;
+  background-color: white;
+  border-radius: 1rem;
+  position: relative;
+  border: 5px solid transparent;
+  background-clip: padding-box;
+  padding: 1.5rem;
+}
+.container::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 1rem;
+  padding: 5px;
+  background: linear-gradient(45deg, #dc0101, purple);
+  z-index: -1;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.title {
+  color: rgb(64, 64, 144);
+  font-size: 1.5rem;
+}
+
+.header img {
+  width: 25px;
+  height: 25px;
+}
+
+.adding {
+  margin: 1.5rem 0;
+}
+
+.adding .input {
+  max-width: 80%;
+  width: 20rem;
+  background-color: rgb(240, 240, 240);
+  border: none;
+  border-radius: 2rem;
+  padding: .5rem;
+}
+
+.input:focus {
+  outline: none;
+}
+
+#todos-container {
+  list-style-type: none;
+}
+
+.cross {
+  width: 15px;
+  height: 15px;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+li {
+  display: flex;
+  align-items: center;
+}
+
+.button {
+  background-color: #dc0101;
+  color: #fff;
+  border: none;
+  padding: .5rem;
+  border-radius: 1.5rem;
+  width: 4rem;
+  position: relative;
+  left: -3rem;
+  cursor: pointer;
+  letter-spacing: .5pt;
+}
+
+#todos-container[data-completed=false] li:has(input:checked) {
+    display: none;
+  }
