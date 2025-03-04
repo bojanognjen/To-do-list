@@ -114,6 +114,10 @@ body {
   outline: none;
 }
 
+input[type="checkbox"]:checked {
+  background-color: #dc0101;
+}
+
 #todos-container {
   list-style-type: none;
 }
@@ -146,3 +150,4 @@ li {
 #todos-container[data-completed=false] li:has(input:checked) {
     display: none;
   }
+
