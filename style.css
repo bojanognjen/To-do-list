@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 
 /* 1. Use a more-intuitive box-sizing model */
 *, *::before, *::after {
@@ -53,7 +53,9 @@ body {
   min-height: 100vh;
   display: grid;
   place-content: center;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-style: normal;
 }
 
 .container {
@@ -118,21 +120,65 @@ input[type="checkbox"]:checked {
   background-color: #dc0101;
 }
 
-#todos-container {
-  list-style-type: none;
+.todos-container {
+  display: grid;
+  gap: 0.3em;
 }
 
 .cross {
-  width: 15px;
-  height: 15px;
+  width: 25px;
+  height: 25px;
   margin-left: auto;
   cursor: pointer;
+  fill: #999; /* Only works if the SVG uses the fill attribute internally */
+  filter: invert(35%) sepia(0%) saturate(0%) brightness(80%);
 }
 
-li {
+.checkbox-container {
   display: flex;
   align-items: center;
 }
+
+.checkbox-container label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-container input {
+  opacity: 0;
+  position: absolute;
+  cursor: pointer;
+}
+
+.checkbox-container label::before {
+  content:'';
+  width: 1.35em;
+  height: 1.35em;
+  border-radius: 50%;
+  margin-right: 1em;
+  border: .05em solid #999;
+}
+
+.checkbox-container input[type="checkbox"]:checked + label::before {
+  border: none;
+  background-color: #dc0101;
+  content: '\002714';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+/* .checkbox-container input[type="checkbox"]:hover + label::before,
+.checkbox-container input[type="checkbox"]:focus + label::before,
+.checkbox-container input[type="checkbox"] + label::before:hover,
+.checkbox-container input[type="checkbox"] + label::before:focus {
+  box-shadow: 00 20px black;
+}  */
+
+
+
 
 .button {
   background-color: #dc0101;
@@ -147,11 +193,7 @@ li {
   letter-spacing: .5pt;
 }
 
-#todos-container[data-completed=false] li:has(input:checked) {
+/* #todos-container[data-completed=false] li:has(input:checked) {
     display: none;
-  }
-
-.tasks {
-  border: 1px solid red;
-}
+  } */
 

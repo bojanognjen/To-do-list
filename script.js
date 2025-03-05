@@ -3,22 +3,21 @@ const addButton = document.querySelector('.button');
 const container = document.querySelector('.todos-container');
 let dataArray = [];
 
-function populateDOM(data) {
-  container.innerHTML = "";
-  data.forEach((item) => appendItem(item));
+function populateDOM(item) {
+  dataArray.push(item);
+  appendItem(item);
 }
 
 function remove(e) {
   e.target.parentNode.remove();
   let siblingText = e.target.parentNode.querySelector('label').innerText;
   const found = dataArray.find(el => el.task == siblingText);
-
-  found ? (dataArray.splice(dataArray.indexOf(found), 1), console.log("Element removed from dataArray:", found)) : null;
+  found ? (dataArray.splice(dataArray.indexOf(found), 1)) : null;
 }
 
 let appendItem = (item) => {
   const todo = document.createElement('LI');
-
+  todo.className = 'checkbox-container';
   // Create checkbox input
   const checkbox = document.createElement("input");
   checkbox.type = "checkbox";
@@ -47,12 +46,12 @@ let appendItem = (item) => {
 }
 
 let pushArray = () => {
-  dataArray.push({
+  let obj = {
     task: `${input.value}`,
     completed: false
-  });
+  };
+  populateDOM(obj);
   input.value = "";
-  populateDOM(dataArray);
 }
 
 function main() {
