@@ -51,7 +51,7 @@ let pushArray = () => {
     task: `${input.value}`,
     completed: false
   };
-  populateDOM(obj);
+  obj.task ? populateDOM(obj) : null;
   input.value = "";
 }
 const handleToggle = (e) => {

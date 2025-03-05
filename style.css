@@ -122,7 +122,7 @@ input[type="checkbox"]:checked {
 
 .todos-container {
   display: grid;
-  gap: 0.3em;
+  gap: 0.4em;
   margin-bottom: 1rem;
 }
 
