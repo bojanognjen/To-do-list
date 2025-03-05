@@ -1,6 +1,7 @@
 const input = document.querySelector('.input');
 const addButton = document.querySelector('.button');
 const container = document.querySelector('.todos-container');
+const toggleBtn = document.getElementById('toggle');
 let dataArray = [];
 
 function populateDOM(item) {
@@ -53,10 +54,22 @@ let pushArray = () => {
   populateDOM(obj);
   input.value = "";
 }
+const handleToggle = (e) => {
+  // determine whether to show or hide completed todos based on the button text
+  let displayAll = e.target.textContent === 'Show completed';
+  // update the `data-completed` attribute on the container
+  container.dataset.completed = displayAll;
+
+  // update the button text
+  e.target.textContent = displayAll ? 'Hide completed' : 'Show completed';
+}
 
 function main() {
   input.value = "";
+
   addButton.addEventListener('click', pushArray);
+
+  toggleBtn.addEventListener('click', handleToggle);
 }
 
 window.addEventListener('load', main);
