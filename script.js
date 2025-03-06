@@ -69,6 +69,11 @@ function main() {
 
   addButton.addEventListener('click', pushArray);
 
+  input.addEventListener('keydown', 
+                        (e) => e.key ==='Enter' ?
+                               pushArray() :
+                               null);
+
   toggleBtn.addEventListener('click', handleToggle);
 }
 
